@@ -80,28 +80,32 @@ public class MySolution {
 				l1.next = new ListNode(1);
 			}
 			return r1;
+		} 
+		
+		if (l2.next != null) {
+			l1.next = l2.next;
+		}
+		if (l1.val >= 10) {
+			l1.val -= 10;
+			l1.next.val += 1;
 		} else {
-			if (l2.next != null) {
-				l1.next = l2.next;
-			}
+			return r1;
+		}
+		l1 = l1.next;
+		while (l1.next != null) {
 			if (l1.val >= 10) {
 				l1.val -= 10;
 				l1.next.val += 1;
+			} else {
+				return r1;
 			}
 			l1 = l1.next;
-			while (l1.next != null) {
-				if (l1.val >= 10) {
-					l1.val -= 10;
-					l1.next.val += 1;
-				}
-				l1 = l1.next;
-			}
-			if (l1.val >= 10) {
-				l1.val -= 10;
-				l1.next = new ListNode(1);
-			}
-			return r1;
 		}
+		if (l1.val >= 10) {
+			l1.val -= 10;
+			l1.next = new ListNode(1);
+		}
+		return r1;
 	}
 
 	public static class ListNode {
